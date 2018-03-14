@@ -95,4 +95,30 @@ app.delete('/delete/:id', function(req,res){
 
 });
 
+//6-PUT => update an obj with id == params.id to new body 
+
+app.put('/put/users/:id', function(req,res){
+   
+    var put = 
+    require('./users.json');
+ let arr= words.filter( item => item.id == req.params.id );
+   let obj ={
+       id : 5000,
+       full_name : "Nooh",
+       gender: "male"
+
+   };
+
+    let index= words.indexOf(arr[0]);
+
+    let del_obj= put.splice(index,1,obj);
+
+    fs.writeFile('./users.json', JSON.stringify(put), function (err) {
+        console.log(err);
+      });
+          res.send("updated an object in users.json file");
+    res.send(del_obj);
+
+});
+
 
