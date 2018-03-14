@@ -42,4 +42,20 @@ app.get('/get/user/:id',function(req,res){
           
     });
 
+    //3- get/user/:id => return all drugs for userId == id ___drug.json
+app.get('/get/drugs/:id',function(req,res){
+
+    drug.forEach(function(item) {
+ 
+        if(item.userId == req.params.id){
+            res.send(item.drugName);
+            console.log(item.drugName);
+
+          }
+      });
+    
+
+});
+
+
 
