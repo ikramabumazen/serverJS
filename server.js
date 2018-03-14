@@ -12,7 +12,7 @@ console.log(drug);
 
 var express=require('express');
 var app=express();
-var server=app.listen(3000 ,listening);
+var server=app.listen(4000 ,listening);
 
 function listening(){
 console.log("listening..");
@@ -32,6 +32,14 @@ app.get('/get/users',function(req,res){
          
    });
 
-
+///2- get/user/:id => returns obj with id ==:id ____ users.json
+app.get('/get/user/:id',function(req,res){
+    
+    let arr= words.filter( item => item.id == req.params.id );
+    res.send(arr);
+    
+    console.log("success");
+          
+    });
 
 
