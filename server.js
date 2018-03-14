@@ -57,5 +57,24 @@ app.get('/get/drugs/:id',function(req,res){
 
 });
 
+//4-POST 
+app.post('/post/:name/:email/:gender', function(req,res){
+    var obj = 
+    require('./users.json');
+    var newThing = {
+        name : req.params.name,
+        email: req.params.email,
+        gender: req.params.gender
+      };
+      obj.push(newThing);
+
+fs.writeFile('./users.json', JSON.stringify(obj), function (err) {
+  console.log(err);
+});
+    res.send("a new object uploaded to users.json file");
+   
+
+});
+
 
 
