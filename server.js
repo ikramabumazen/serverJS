@@ -73,8 +73,26 @@ fs.writeFile('./users.json', JSON.stringify(obj), function (err) {
 });
     res.send("a new object uploaded to users.json file");
    
-
 });
 
+//5-DELETE => delete object from users.json file with id == params.id
+
+app.delete('/delete/:id', function(req,res){
+    var D = 
+    require('./users.json');
+ let arr= words.filter( item => item.id == req.params.id );
+   
+    
+    let index= words.indexOf(arr[0]);
+
+    let del_obj= D.splice(index,1);
+
+    fs.writeFile('./users.json', JSON.stringify(D), function (err) {
+        console.log(err);
+      });
+          res.send("deleted an object from users.json file");
+    res.send(del_obj);
+
+});
 
 
